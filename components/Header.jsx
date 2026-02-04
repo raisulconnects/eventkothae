@@ -6,8 +6,6 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import EventKothaeBtn from "./EventKothaeBtn";
-import EventKothaeBtn2 from "./EventKothaeBtn2";
-import { Textarea } from "./ui/textarea";
 
 export default function Header() {
   return (
@@ -25,11 +23,11 @@ export default function Header() {
 
         <div className="flex justify-center items-center gap-10">
           <SignedOut>
-            <SignInButton>
+            <SignInButton mode="modal">
               <EventKothaeBtn>Sign In</EventKothaeBtn>
             </SignInButton>
-            <SignUpButton>
-              <EventKothaeBtn>Sign Un</EventKothaeBtn>
+            <SignUpButton mode="modal">
+              <EventKothaeBtn>Sign Up</EventKothaeBtn>
             </SignUpButton>
           </SignedOut>
           <SignedIn>
