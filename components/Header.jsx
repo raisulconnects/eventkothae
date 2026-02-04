@@ -3,8 +3,12 @@
 import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import EventKothaeBtn from "./EventKothaeBtn";
 import { Authenticated, Unauthenticated } from "convex/react";
+import { BarLoader } from "react-spinners";
+import { useStoreUser } from "@/hooks/use-store-user";
 
 export default function Header() {
+  const { isLoading } = useStoreUser();
+
   return (
     <nav className="sticky top-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/10 text-white py-5">
       <div className="flex justify-between items-center px-30">
@@ -34,6 +38,11 @@ export default function Header() {
         </div>
       </div>
       {/* Search bar - mobile only */}
+      {isLoading && (
+        <div className="absolute bottom-0 left-0 w-full">
+          <BarLoader width={"100%"} color="#a855f7" />
+        </div>
+      )}
     </nav>
 
     //
