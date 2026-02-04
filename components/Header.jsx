@@ -1,11 +1,8 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+"use client";
+
+import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import EventKothaeBtn from "./EventKothaeBtn";
+import { Authenticated, Unauthenticated } from "convex/react";
 
 export default function Header() {
   return (
@@ -22,17 +19,18 @@ export default function Header() {
         {/* pricing explore signin btn */}
 
         <div className="flex justify-center items-center gap-10">
-          <SignedOut>
+          <Authenticated>
+            <UserButton />
+          </Authenticated>
+
+          <Unauthenticated>
             <SignInButton mode="modal">
               <EventKothaeBtn>Sign In</EventKothaeBtn>
             </SignInButton>
             <SignUpButton mode="modal">
               <EventKothaeBtn>Sign Up</EventKothaeBtn>
             </SignUpButton>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          </Unauthenticated>
         </div>
       </div>
       {/* Search bar - mobile only */}
