@@ -5,6 +5,9 @@ import EventKothaeBtn from "./EventKothaeBtn";
 import { Authenticated, Unauthenticated } from "convex/react";
 import { BarLoader } from "react-spinners";
 import { useStoreUser } from "@/hooks/use-store-user";
+import EventKothaeBtn2 from "./EventKothaeBtn2";
+import Link from "next/link";
+import { Building, Plus, Ticket } from "lucide-react";
 
 export default function Header() {
   const { isLoading } = useStoreUser();
@@ -23,8 +26,29 @@ export default function Header() {
         {/* pricing explore signin btn */}
 
         <div className="flex justify-center items-center gap-10">
+          <EventKothaeBtn2>
+            <Link href={"/explore"}>Explore</Link>
+          </EventKothaeBtn2>
+
           <Authenticated>
-            <UserButton />
+            <EventKothaeBtn2>
+              <Plus />
+              <span className="hidden sm:inline">Create Event?</span>
+            </EventKothaeBtn2>
+            <UserButton>
+              <UserButton.MenuItems>
+                <UserButton.Link
+                  label="My Tickets"
+                  labelIcon={<Ticket size={16} />}
+                  href="/my-tickets"
+                />
+                <UserButton.Link
+                  label="My Events"
+                  labelIcon={<Building size={16} />}
+                  href="/my-events"
+                />
+              </UserButton.MenuItems>
+            </UserButton>
           </Authenticated>
 
           <Unauthenticated>
